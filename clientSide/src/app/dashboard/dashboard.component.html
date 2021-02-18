@@ -1,0 +1,266 @@
+<!-- <div class="ui h-100" >
+  <div class="ui grid h-100 w-100">
+    <div class="twelve wide column">
+
+      <div class="ui form">
+        <div class="ui segment">
+          <label class="ui label">Email : &nbsp; {{userInfo?.email}} &nbsp;&nbsp;&nbsp; ,  Name :&nbsp;  {{userInfo?.name}},&nbsp;&nbsp;&nbsp;  Phone : &nbsp; {{userInfo?.phone}}</label>
+            <div class="ui segment panel-body">
+          <div class="ui message" *ngFor="let mess of messages">
+           
+            <div class="header" >
+                {{mess.user}}
+               </div>
+            <ul class="ui list">
+              <li>{{mess.msg}}</li>
+            </ul>
+          </div>
+            </div>
+          <div class="two fields my-2">
+            <div class="field">
+              <input type="text" [(ngModel)]="msg"
+                name="msge" placeholder="Type a meesage ">
+            </div>
+            <div class="field">
+              <button class="ui tiny blue button my-2"
+                (click)="sendMessage()" style="margin-top: 5px">Send</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="four wide column">
+<div  *ngFor="let user of usersAll ; let i= index">
+      <div class="ui card mycard"   *ngIf="userInfo?.name === user.name">
+        <div class="content" >
+          <div class="header" style="font-weight: 600 !important"><strong> 
+            {{user.name}}</strong>
+            <div class="right floated author">
+              <img class="ui tiny circular img" src="../assets/d.png">
+            </div>
+            <div class="meta ui mini text-justify" *ngIf="online === user.name">
+              <span class=""  style="font-size:15px !important"> <span class="on"></span>&nbsp; online</span>
+            </div>
+            <div class="meta ui mini text-justify"  *ngIf="online !== user.name">
+                <span class=""  style="font-size:15px !important"> <span class="off"></span>&nbsp; offline</span>
+              </div>
+  
+
+          </div>
+
+          <br>
+          <div class="">
+            <span class="right floated time">{{usersAll?.phone}}</span>
+            <span class="category">{{usersAll?.email}}</span>
+          </div>
+
+        </div>
+        <div class="extra content">
+          <div class="ui two tiny buttons">
+            <div class="ui tiny green button" >
+              <i class="eye white icon"></i>
+              View </div>
+            <div class="ui tiny red button" (click)="chatWithUser(user.user)">  <i class="message white icon"></i> Chat</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- 
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+<!------ Include the above in your HEAD tag ---------->
+
+<html>
+	<body>
+		<div class="h-100">
+			<div class="row justify-content-right h-100">
+				<div class="col-md-4 col-xl-3 chat" style="padding-right: 0"><div
+						class="card mb-sm-3 mb-md-0 contacts_card">
+						<div class="card-header">
+							<div class="card-footer" *ngIf="this.UserAdded === false">
+								<div class="ui grid">
+									<div class="four wide column">
+										<img src="{{ api.url + '/file/'+ this.forProfile?.image }}"
+											class="rounded-circle user_img_msg">
+
+									</div >
+									<div class="twelve wide column">
+										<h3> <strong style="color: white">{{forProfile?.name}} </strong> </h3>
+									</div>
+								</div>
+
+
+							</div>
+							<div class="input-group">
+								<input type="text" placeholder="Search..." name="" class="form-control
+									search">
+								<div class="input-group-prepend">
+									<span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+								</div>
+							</div>
+						</div>
+						<div class="card-body contacts_body">
+							<ui class="contacts" *ngFor="let user of usersAll ; let i= index">
+								<li class="active" *ngIf="user?._id !== forProfile?._id">
+									<div class="d-flex bd-highlight" (click)="getUserForChat(user._id)" style="cursor:	pointer">
+										<div class="img_cont">
+
+											<img src="{{ api.url + '/file/' + user?.image }}"
+												class="rounded-circle user_img" class="rounded-circle user_img">
+											<!-- <span class="online_icon"></span> -->
+										</div>
+										<div class="user_info" >
+											<span>{{user?.name}} </span>
+											<!-- <p>online</p> -->
+										</div>
+									</div>
+								</li>
+
+							</ui>
+						</div>
+						<div class="card-footer"></div>
+					</div>
+				</div>
+				<div class="col-md-8 col-xl-9 chat" style="padding-left: 0;
+					position: relative;" *ngIf="this.UserAdded === true">
+					<div class="card" style="padding: 180px;color: white">
+						<div class="ui grid"> 
+							<div class="twelve wide column">
+								<div class="content" style="padding: 18px;
+									background: rgb(2,0,36);
+									background: linear-gradient(90deg, rgba(2, 0, 36, 0.644) 0%, rgba(13,
+									13, 150, 0.521) 41%, rgba(0, 213, 255, 0.438) 100%);; box-shadow:0px
+									1px 10px 5px #86a7e4,0 0 0 0 #8278dd !important;border-radius: 10px">
+									<h1>Welcome <strong style="color: rgb(255, 215, 215)">
+											{{forProfile?.name}} </strong></h1>
+									<h6><strong> Login Time {{todayTime | date : 'shortTime'}}</strong></h6><br><br>
+									<h6><strong> Your Phone No. : &nbsp;&nbsp;&nbsp; {{forProfile?.phone}}</strong></h6>
+									<h6><strong> Your Email No. &nbsp;&nbsp;: &nbsp;&nbsp;
+											{{forProfile?.email}}</strong></h6>
+								</div>
+							</div>
+							<div class="four wide column" style="margin-left: -15px">
+								<div class="content">
+									<img src="{{ api.url + '/file/'+ this.forProfile?.image }}" width="150"
+										height="195" style="border-radius: 10px;box-shadow:0px 1px 10px 5px
+										#86a7e4,0 0 0 0 #8278dd !important;">
+								</div>
+							</div>
+
+						</div>
+
+
+					</div>
+
+				</div>
+
+				<div class="col-md-8 col-xl-9 chat" style="padding-left: 0"
+					*ngIf="this.UserAdded === false">
+					<div class="card">
+						<div class="card-header msg_head">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="{{ api.url + '/file/'+ this.selectedUser?.image }}"
+										class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Chat with {{selectedUser?.name}} </span>
+									<p>online</p>
+								</div>
+								<!-- <div class="video_cam">
+									<span  (click)="videoComp()" routerLinkActive="active"><i class="fas fa-video"></i></span>
+									<span><i class="fas fa-phone"></i></span>
+								</div> -->
+							</div>
+							<span id="action_menu_btn" style="margin-top: 20px !important">
+								<span style="margin-right:20px !important; margin-top: 40px !important"
+								routerLinkActive="active" [routerLink]="['/']"	><i class="fas fa-video"></i></span>
+								<!-- <span style="margin-right:20px !important; margin-top: 40px !important"><i
+										class="fas fa-phone"></i></span> -->
+							</span>
+							<div class="action_menu">
+								<ul>
+									<li><i class="fas fa-user-circle"></i> View profile</li>
+									<li><i class="fas fa-users"></i> Add to close friends</li>
+									<li><i class="fas fa-plus"></i> Add to group</li>
+									<li><i class="fas fa-ban"></i> Block</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="card-body msg_card_body">
+
+							<div *ngIf="UserProfileBoard === true">
+								<!-- <app-video-chat></app-video-chat> -->
+							</div>
+							<div>
+								<div *ngIf="chatBoard === true">
+									<div *ngFor="let mess of messages">
+										<div class="d-flex justify-content-start mb-4" *ngIf="mess.to ===
+											myUserName">
+											<div class="img_cont_msg">
+												<img src="{{ api.url + '/file/'+ this.selectedUser?.image }}"
+													class="rounded-circle user_img_msg">
+											</div>
+											<br>
+
+											<div class="msg_cotainer">
+												<!-- from -->
+												<!-- <span><strong> {{selectedUser?.name}} </strong></span><br> -->
+												<span> {{mess?.msg}} </span>
+												<span><strong> </strong></span><br>
+												<span class="msg_time">{{mess?.time | date :'short'}}</span>
+											</div>
+										</div>
+										<div class="d-flex justify-content-end mb-4" *ngIf="mess.to !==
+											myUserName && myUserName === mess.from">
+
+											<div class="msg_cotainer_send">
+												<!-- you -->
+												<!-- <span><strong> You </strong></span><br> -->
+												<span> {{mess?.msg}} </span>
+												<span><strong> </strong></span><br>
+												<span class="msg_time_send">{{mess?.time | date :'short'}}</span>
+											</div>
+											<div class="img_cont_msg">
+												<img src="{{ api.url + '/file/'+ this.forProfile?.image }}"
+													class="rounded-circle user_img_msg">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="card-footer" *ngIf="UserProfileBoard === false">
+							<div class="input-group">
+								<div class="input-group-append">
+									<button class="input-group-text attach_btn" type="file"><i class="fas
+											fa-paperclip"></i></button>
+								</div>
+								<textarea name="msg" [(ngModel)]="msg" class="form-control type_msg"
+									placeholder="Type your message..."></textarea>
+								<div class="input-group-append">
+									<span class="input-group-text send_btn" (click)="sendMessage()">Send
+										&nbsp;<i class="fas fa-location-arrow"></i></span>
+								</div>
+							</div>
+							<!-- <button type="button" (click)="fileInput.click()">
+								<span>Upload</span>
+								<input #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+							</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+

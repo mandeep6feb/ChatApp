@@ -1,0 +1,51 @@
+<!-- <div *ngIf="!includes('user')">
+    <div class="ui top attached demo menu mycard" >
+      <a class="item" (click)="sidebar.toggle()">
+        <i class="sidebar icon"></i> Menu
+      </a>
+      <div class="right menu" >
+        <a class="ui item active"  >
+           <span (click)="logout()"> logout </span>
+        </a>
+           
+      </div>
+    </div>
+    <sui-sidebar-container class="ui bottom attached segment " >
+      <sui-sidebar  class="inverted vertical" #sidebar> -->
+          <!-- <a class="item" (click)="sidebar.toggle()" [routerLink]="['/dashboard']"><i class="home icon"></i>Home</a>
+        <a class="item" (click)="sidebar.toggle()" [routerLink]="['/ranter']"><i class="add icon"></i> User Profile
+          </a> -->
+        <!-- <a class="item">Remove</a> -->
+      <!-- </sui-sidebar>
+      <sui-sidebar-sibling [isDimmedWhenVisible]="true">
+         <router-outlet></router-outlet>
+      </sui-sidebar-sibling>
+    </sui-sidebar-container> 
+    </div> -->
+    <!-- 
+      <app-user-register></app-user-register>
+    <div >
+    <router-outlet></router-outlet>
+    </div> -->
+    <div  >
+    <router-outlet></router-outlet>
+    <!-- <app-ranter></app-ranter>   -->
+    </div>
+    
+    <ng-template let-popup #popupTemplate>
+        <div class="header">Do You Want To Logout ?</div>
+        <div class="content">
+            <button class="ui icon red button" (click)="logout()">YES</button>
+            <button class="ui icon green button"  (click)="popup.close()">No</button>
+        </div>
+    </ng-template>
+    <!-- <sui-modal >
+        <div class="header">Example</div>
+        <div class="content">
+            <p>Modal content</p>
+        </div>
+        <div class="actions">
+            <button class="ui red button" (click)="modal.deny()">No</button>
+               <button class="ui icon red button" (click)="logout()">Yes</button>
+        </div>
+    </sui-modal> -->

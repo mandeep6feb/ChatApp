@@ -1,0 +1,93 @@
+<div class="ui grid mt-5" style="margin-top: 35px">
+    <div class="four wide column">
+    </div>
+  <div class="eight wide column">
+    <h2 class="ui teal image header">
+      <!-- <img src="assets/images/logo.png" class="image"> -->
+      <div class="content">
+        Create New Account
+      </div>
+    </h2>
+
+   
+      
+          <form  class="ui small form " onsubmit="return false;" autocomplete="off">
+              <!-- {{userDeatils | json}} -->
+                <div class="ui stacked segment">
+                    <div class="ui icon positive message" *ngIf="this.creation === true" >
+                        <i class="close icon"></i>
+                        <i class="check circle green icon"></i>
+                        <div class="content">
+                        <div class="header">
+                          Registration successfully done !
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ui icon negative message" *ngIf="this.error === true">
+                        <i class="close icon"></i>
+                        <i class="x red icon"></i>
+                        <div class="content">
+                        <div class="header">
+                         <!-- <span *ngIf="!this.userDeatils.name"> name is required !</span> -->
+                         <!-- <span *ngIf="!this.userDeatils.email"> email is required !</span> -->
+                         <!-- <span *ngIf="!this.userDeatils.password"> password is required !</span> -->
+                         <span *ngIf="this.error === true"> something went wrong !</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ui grid">
+                        <div class="twelve wide column">
+                    <div class="field required">
+                        <label for="">Full Name</label>
+                        <div class="ui left icon input">
+                          <i class="user icon"></i>
+                          <input type="text" name="name" [(ngModel)]="userDeatils.name" placeholder="Enter Name">
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label for="">Phone No.</label>
+                          <div class="ui left icon input">
+                          
+                            <i class="phone icon"></i>
+                            <input type="number" name="phone" [(ngModel)]="userDeatils.phone" placeholder="Pnone No.">
+                          </div>
+                        </div>
+                        </div>
+                        <div class="four wide column">
+                            <img *ngIf="!imageSrc" style="cursor: pointer;margin-bottom: 10px;margin-top: 15 px" src="{{this.api.noImagePath}}" class="ui image" alt=""  (click)="image.click()">
+                            <img *ngIf="imageSrc" [src]="imageSrc" class="ui fluid image" alt="" width="750" height="750"  (click)="image.click()">
+                            <input type="file" hidden style="padding: 5px" accept="image/*"  (change)="handleFileInput($event.target.files)" #image name="image" placeholder="image"/>
+                        </div>
+                    </div>
+
+                  <div class="field required">
+                      <label for="">Email</label>
+                    <div class="ui left icon input">
+                      <i class="mail icon"></i>
+                      <input type="text" name="email" [(ngModel)]="userDeatils.email" placeholder="E-mail address">
+                    </div>
+                  </div>
+                  <div class="field required">
+                      <label for="">Password</label>
+                    <div class="ui left icon input">
+                      <i class="lock icon"></i>
+                      <input type="password" name="password" [(ngModel)]="userDeatils.password" placeholder="Choose Password">
+                    </div>
+                  </div>
+                  <div class="ui fluid large teal  button"   (click)="post()">Register</div>
+                </div>
+          
+                <div class="ui error message"></div>
+          
+              </form>
+     
+
+    
+
+    <div class="ui message">
+      Allready User ? <a href="#" [routerLink]="['/user-login']">&nbsp; Login Here</a>
+    </div>
+  </div>
+  <div class="four wide column">
+    </div>
+</div>
